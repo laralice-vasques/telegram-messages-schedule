@@ -1,0 +1,14 @@
+{
+  "name": "laraprojeto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "create_database": "node init_db.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sqlite3": "^5.0.0"
+  }
+}
