@@ -5,15 +5,15 @@ const sqlite3 = require('sqlite3').verbose();
 function getMessages() {
     // Cria a conexão com o DB
     const db = new sqlite3.Database('database.sqlite');
-    
+
     // SQL que será executada
     const sql = "SELECT * FROM messages"
 
     // Função responsável de lidar com o resultado da query
     const callback = (err, rows) => {
         console.log(rows)
-    } 
-    
+    }
+
 
     // Executa a query e passa os resultados para função callback
     db.all(sql, callback)
@@ -30,16 +30,16 @@ function findMessage(id) {
     const callback = (err, row) => {
         console.log(row)
     }
-    
+
     // Quando estiver buscando apenas uma linha, usar o método get.
     db.get(sql, id, callback)
 
     db.close()
 }
 
-function  insertMessage(link) {
+function insertMessage(link) {
     const db = new sqlite3.Database('database.sqlite')
-    
+
     const sql = "INSERT INTO messages(link) VALUES(?)"
     const callback = (err) => {
         if (err !== null) {
@@ -52,11 +52,26 @@ function  insertMessage(link) {
     db.close()
 }
 
+function updateMessage(id, link) {
+    const db = new sqlite3.Database('database.sqlite')
+
+    const sql = "UPDATE messages SET link = ? WHERE id = ?"
+    const callback = (err) => {
+        if (err !== null) {
+            console.log("Ocorreu um erro ao atualizar: " + err)
+        }
+    }
+
+    db.run(sql, [link, id], callback)
+
+    db.close()
+}
+
 
 function deleteMessage(id) {
     const db = new sqlite3.Database('database.sqlite')
-    
-    const sql = "DELETE FROM messages WHERE id = ?" 
+
+    const sql = "DELETE FROM messages WHERE id = ?"
     const callback = (err) => {
         if (err !== null) {
             console.log("Erro ao deletar: " + err)
