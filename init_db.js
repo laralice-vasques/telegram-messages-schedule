@@ -5,7 +5,7 @@ const db = new sqlite.Database("./database.sqlite"); //criando a conexão com o 
 const ddls = [
     `CREATE TABLE messages (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        link TEXT NOT NULL
+        link TEXT UNIQUE NOT NULL
     )`,
         `CREATE TABLE groups (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
