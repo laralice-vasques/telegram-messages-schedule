@@ -9,7 +9,7 @@ CREATE TABLE groups (
     name TEXT UNIQUE NOT NULL
 );
 
-CREATE TABLE (
+CREATE TABLE groups_messages (
     id_message INTEGER PRIMARY KEY AUTOINCREMENT,
     id_group INTEGER PRIMARY KEY AUTOINCREMENT,
     FOREIGN KEY(id_message) references messages(id),
